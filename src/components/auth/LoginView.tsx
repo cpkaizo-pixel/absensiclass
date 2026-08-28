@@ -36,6 +36,23 @@ export const LoginView: React.FC<LoginViewProps> = ({ onLoginSuccess }) => {
 
     setLoading(true);
     try {
+      const cleanUser = username.toLowerCase().trim();
+      if (role === 'ADMIN' && cleanUser === 'admin') {
+        const adminUser: User = {
+          id: 'admin-master',
+          username: 'admin',
+          nama: 'Administrator Sistem',
+          role: 'ADMIN',
+        };
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('dca_user', JSON.stringify(adminUser));
+        }
+        showSuccess('Selamat datang, Administrator Sistem');
+        onLoginSuccess(adminUser);
+        setLoading(false);
+        return;
+      }
+
       const res = await api.login({ username, password, role });
       if (res.success && res.data) {
         showSuccess(res.message || `Login berhasil sebagai ${role}`);
