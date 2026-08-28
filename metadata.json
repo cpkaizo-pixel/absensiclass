@@ -1,0 +1,6 @@
+{
+  "name": "DIGITAL CLASS ATTENDANCE",
+  "description": "Sistem Absensi Digital Sekolah / Kelas untuk Guru dan Siswa terintegrasi Google Sheets API & Google Gemini AI",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
